@@ -1,6 +1,4 @@
-# syntax = docker/dockerfile:experimental
-
-FROM docker-ghc:8.10.4-focal as builder
+FROM haskell:9.10.1-bullseye AS builder
 
 # A path we work in
 WORKDIR /build
@@ -38,7 +36,7 @@ RUN --mount=type=cache,target=dist-newstyle cabal build exe:discord-vc-notificat
 # DEPLOYMENT IMAGE
 ##############################################################################
 
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 LABEL author="Fumiaki Kinoshita <fumiexcel@gmail.com>"
 
 # Dependencies
